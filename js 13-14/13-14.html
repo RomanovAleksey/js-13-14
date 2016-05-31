@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="tpl.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<style>
+html{
+	position: relative;
+}
+.modal_test h3{
+	line-height: 154px;
+}
+.modal_test{
+	position: absolute;
+	top: 30%;
+	left: 35%;
+	width: 400px;
+	height: 250px;
+	background: #ddd;
+	display: none;
+	text-align: center;
+}
+</style>
+<body>
+
+
+	<script type="text/html" id="test">
+		
+	<div>
+		<h3 class="col-md-offset-5 col-md-4"><%=data.title %></h3>
+		
+		<% for(var i=0; i < data.question.length; i++) { %>
+		<div class="row">
+			<div class="col-md-offset-3 col-md-3">
+				<h4><%= data.question[i].title %></h4>
+				<ul>
+				<% for( var k=0; k < data.question[0].answers.length; k++){ %>
+					<li>
+						<input id="answer_<%= i+1 %>_<%= k+1 %>" type="checkbox">
+						<label for="answer_<%= i+1 %>_<%= k+1 %>"><%= data.question[i].answers[k].title %></label>
+					</li>
+				<% } %>
+				</ul>
+			</div>
+		</div>
+		<% } %>
+
+		<button class="col-md-offset-5 col-md-2 btn btn-primary"><%= data.button %></button>
+	</div>
+	<div class="modal_test">
+		<h3></h3>
+		<button class="btn_test">Закрыть</button>
+	</div>
+	</script>
+</body>
+</html>
